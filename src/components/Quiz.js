@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Questions from "./Questions";
 
-const Quiz = () => {
+/**redux store impore*/
+import { useSelector } from "react-redux";
+
+export default function Quiz() {
+  const { state } = useSelector((state) => state);
+
+  useEffect(() => {
+    console.log(state)
+  })
+
   /**next button event handler */
   function onNext() {
     console.log("On next click");
@@ -19,7 +28,6 @@ const Quiz = () => {
       {/**display questions */}
       <Questions></Questions>
 
-      
       <div className="grid">
         <button className="btn prev" onClick={onPrev}>
           Prev
@@ -30,6 +38,4 @@ const Quiz = () => {
       </div>
     </div>
   );
-};
-
-export default Quiz;
+}
